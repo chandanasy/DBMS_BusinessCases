@@ -1,0 +1,1 @@
+This Repository includes different business case scenarios and corresponding data models created to address business requirements. The aim was to improve data management and analytics capabilities, leading to a more efficient query process and enhanced data integrity.
