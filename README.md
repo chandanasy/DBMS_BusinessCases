@@ -21,12 +21,19 @@ To address the complexities of the NYC Subway system and ensure a robust databas
 - **CSY_TRSS (Associative Entity):** This associative table resolves the many-to-many relationship between train lines (CSY_TR) and subway stations (CSY_SS).
 
 #### Specific Assumptions:
+
 a. Each station has a unique set of facilities.
+
 b. Missing arrival/departure times in operations data are handled programmatically, not within the database constraints.
+
 c. A one-to-one relationship exists between subway stations (CSY_SS) and their facilities (CSY_SF), assuming each station's set of facilities is unique.
+
 d. A many-to-many relationship is defined between train lines (CSY_TR) and subway stations (CSY_SS) — a train line can pass through multiple stations, and each station can serve multiple train lines.
+
 e. One-to-many relationship from train lines (CSY_TR) to operations (CSY_SOP) — each train line can have multiple operations.
+
 f. One-to-many relationship from subway stations (CSY_SS) to operations (CSY_SOP) — each station can have multiple operations.
+
 g. One-to-one relationship from subway stations (CSY_SS) to facilities (CSY_SF) — each station has a specific set of facilities.
 
 ### Model and SQL Code
