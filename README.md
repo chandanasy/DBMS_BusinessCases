@@ -1,79 +1,63 @@
-This Repository includes different business case scenarios and corresponding data models created to address business requirements. The aim was to improve data management and analytics capabilities, leading to a more efficient query process and enhanced data integrity.
+# Business Case Scenarios Data Models
 
-## NYC Transit Business Case 
+This repository includes different business case scenarios and corresponding data models created to address specific business requirements. The aim was to improve data management and analytics capabilities, leading to a more efficient query process and enhanced data integrity.
 
+---
 
+## NYC Transit Business Case
 
 ### Overview
-This business case focuses on the New York City Subway system, with an emphasis on organizing and structuring data to improve operational efficiency and service analysis. The design employs a relational database model to capture intricate details of subway lines, stations, operations, and facilities.
+This business case focuses on the New York City Subway system. It aims to restructure data to improve operational efficiency and facilitate service analysis through a relational database model that captures details of subway lines, stations, operations, and facilities.
 
 ### Assumptions Made
-To address the complexities of the NYC Subway system and ensure a robust database design, the following assumptions have been made:
+Several assumptions underpin the database design for the NYC Subway system:
 
-- **CSY_TR (Train Line Data/Attributes):** Each train line has unique attributes, including line number/name, division, and operational years.
-
-- **CSY_SS (Subway Station Data/Attributes):** Each subway station is identified by a unique name and address, associated with a specific borough and neighborhood.
-
-- **CSY_SOP (Subway Operations Data/Attributes):** Operations data captures details of train lines at subway stations, including arrival and departure times and service types (local/express/mixed).
-
-- **CSY_SF (Subway Station Facilities Data/Attributes):** Facilities at each station, such as elevators, escalators, restrooms, are recorded, with attributes indicating their availability (Yes/No).
-
-- **CSY_TRSS (Associative Entity):** This associative table resolves the many-to-many relationship between train lines (CSY_TR) and subway stations (CSY_SS).
+- **Train Line Data/Attributes (CSY_TR):** Each train line has unique identifiers, divisions, and operational timelines.
+- **Subway Station Data/Attributes (CSY_SS):** Stations are uniquely defined by name and location, tied to boroughs and neighborhoods.
+- **Subway Operations Data/Attributes (CSY_SOP):** Details include train line, station, service times, and type.
+- **Subway Station Facilities Data/Attributes (CSY_SF):** Records facility availability at stations.
+- **Associative Entity (CSY_TRSS):** Resolves many-to-many relationships between train lines and stations.
 
 #### Specific Assumptions:
+- Unique facilities per station.
+- Programmatic handling of missing time data.
+- One-to-one relationship for station facilities.
+- Many-to-many relationship for train lines and stations.
+- One-to-many relationships for train lines to operations and stations to operations.
+- One-to-one relationship from stations to facilities.
 
-a. Each station has a unique set of facilities.
+### Database Design
+The database schema, along with its constraints and relationships, is detailed in the provided DDL code.
 
-b. Missing arrival/departure times in operations data are handled programmatically, not within the database constraints.
+---
 
-c. A one-to-one relationship exists between subway stations (CSY_SS) and their facilities (CSY_SF), assuming each station's set of facilities is unique.
-
-d. A many-to-many relationship is defined between train lines (CSY_TR) and subway stations (CSY_SS) — a train line can pass through multiple stations, and each station can serve multiple train lines.
-
-e. One-to-many relationship from train lines (CSY_TR) to operations (CSY_SOP) — each train line can have multiple operations.
-
-f. One-to-many relationship from subway stations (CSY_SS) to operations (CSY_SOP) — each station can have multiple operations.
-
-g. One-to-one relationship from subway stations (CSY_SS) to facilities (CSY_SF) — each station has a specific set of facilities.
-
-### Model and SQL Code
-The database schema, along with its constraints and relationships, is defined in the DDL code provided. 
-
-# Uber Eats Database Design Project
-
+## Uber Eats Database Design Project
 
 ### Business Case
-Uber Eats has established itself in thousands of cities globally. The database design will encapsulate the various aspects of the service, including the couriers' information, customer details, restaurant data, and delivery transactions.
+The Uber Eats database design reflects the operational needs of an expansive food delivery service operating across multiple countries and thousands of cities.
 
-## Assumptions Made
+### Assumptions Made
+The database design is predicated on the following assumptions:
 
-For the integrity and functionality of the database design, the following assumptions were made:
-
-### Courier Data (`CSY_COURIER`)
-- Couriers are characterized by their personal details and vehicle information.
-- Bank account numbers are restricted to a size of 20 characters to accommodate variations in American bank accounts.
-- Bank routing numbers are set to a fixed size of 9 characters.
-
-### Customer Data (`CSY_CUST`)
-- Customers have attributes such as name, contact details, and type (Corporate or Individual).
-
-### Restaurant Data (`CSY_REST`)
-- Restaurants are defined by their name, contact information, and specialty.
-- Phone numbers accommodate international dialing codes, hence set to a size of 12 characters.
-- Website URLs are optional.
-
-### Delivery Service Data (`CSY_DEL`)
-- Delivery details include timestamps, order amount, and payment information.
-
-### Associative Table (`CSY_CC`)
-- This table resolves the many-to-many relationships between restaurants and delivery services.
+- **Courier Data (CSY_COURIER):** Personal and vehicle-related information of the courier is stored, with constraints on banking details to reflect standard sizes.
+- **Customer Data (CSY_CUST):** Customers are identified by personal information and classified by type.
+- **Restaurant Data (CSY_REST):** Restaurants are listed with contact details and specialties, with optional website URLs.
+- **Delivery Service Data (CSY_DEL):** Delivery transactions record detailed order and payment information.
+- **Associative Table (CSY_CC):** Manages many-to-many relationships between restaurants and delivery services.
 
 ### Entity Relationships
-- Each delivery order is associated with a single restaurant, courier, and customer.
-- Couriers, customers, and restaurants can have multiple delivery services associated with them.
-- Couriers can deliver to many customers, and customers can receive deliveries from many couriers, represented by an associative table.
+- Direct associations between delivery orders, restaurants, couriers, and customers.
+- One-to-many relationships are defined for couriers, customers, and restaurants with delivery services.
+- A many-to-many relationship exists between couriers and customers, facilitated by an associative table.
 
-## Database Design
+### Database Design
+The database schema encapsulates entities, attributes, and relationships as per the assumptions. Oracle Data Modeler was used to create both logical and relational models. The DDL code provided enables the execution of the database schema as designed.
 
-The database schema includes entities, attributes, and relationships that reflect the above assumptions. The design is created using Oracle Data Modeler, which provides both logical and relational models. DDL code for the schema is included to facilitate the creation of the database according to the designed model.
+---
+
+## Contributing
+Contributions to the repository are welcome. If you have suggestions for improving the database designs or adding new business cases, please submit a pull request with your proposed changes.
+
+## Usage Notes
+Please ensure compliance with all relevant data use policies and privacy considerations when applying these database designs in real-world applications. Detailed instructions for the database design process are included within the SQL scripts and model diagrams for each business case.
 
