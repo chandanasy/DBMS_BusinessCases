@@ -38,3 +38,42 @@ g. One-to-one relationship from subway stations (CSY_SS) to facilities (CSY_SF) 
 
 ### Model and SQL Code
 The database schema, along with its constraints and relationships, is defined in the DDL code provided. 
+
+# Uber Eats Database Design Project
+
+
+### Business Case
+Uber Eats has established itself in thousands of cities globally. The database design will encapsulate the various aspects of the service, including the couriers' information, customer details, restaurant data, and delivery transactions.
+
+## Assumptions Made
+
+For the integrity and functionality of the database design, the following assumptions were made:
+
+### Courier Data (`CSY_COURIER`)
+- Couriers are characterized by their personal details and vehicle information.
+- Bank account numbers are restricted to a size of 20 characters to accommodate variations in American bank accounts.
+- Bank routing numbers are set to a fixed size of 9 characters.
+
+### Customer Data (`CSY_CUST`)
+- Customers have attributes such as name, contact details, and type (Corporate or Individual).
+
+### Restaurant Data (`CSY_REST`)
+- Restaurants are defined by their name, contact information, and specialty.
+- Phone numbers accommodate international dialing codes, hence set to a size of 12 characters.
+- Website URLs are optional.
+
+### Delivery Service Data (`CSY_DEL`)
+- Delivery details include timestamps, order amount, and payment information.
+
+### Associative Table (`CSY_CC`)
+- This table resolves the many-to-many relationships between restaurants and delivery services.
+
+### Entity Relationships
+- Each delivery order is associated with a single restaurant, courier, and customer.
+- Couriers, customers, and restaurants can have multiple delivery services associated with them.
+- Couriers can deliver to many customers, and customers can receive deliveries from many couriers, represented by an associative table.
+
+## Database Design
+
+The database schema includes entities, attributes, and relationships that reflect the above assumptions. The design is created using Oracle Data Modeler, which provides both logical and relational models. DDL code for the schema is included to facilitate the creation of the database according to the designed model.
+
